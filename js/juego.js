@@ -1,27 +1,37 @@
 console.log('Bienvenido a tu travesía por las tierras de Eran!');
 
-const name = prompt('Elige tu nombre:')
+const init = document.getElementById("init")
+init.addEventListener("click", () => {
+    let welcome = document.createElement("p");
+    welcome.innerHTML = "<h3>Bienvenido viajero! Ingresa tu nombre para poder empezar tu travesía.</h3><input>";
+        const start = document.getElementById("start");
+    start.appendChild(welcome)
+
+    let init = document.getElementById("init");
+    init.innerText = "Elige tu nombre"
+})
+
 class Race {
-    constructor(id, type, atk, def, des, int, car, life, city){
+    constructor(id, type, atk, def, agi, int, char, life, city){
         this.id = id
         this.type = type
         this.atk = atk
         this.def = def
-        this.des = des
+        this.agi = agi
         this.int = int
-        this.car = car
+        this.car = char
         this.life = life
         this.city = city
     }
-    entrenamiento(atk, def, des, int){
+    entrenamiento(atk, def, agi, int){
         this.atk = this.atk + atk
         this.def = this.def + def
-        this.des = this.des + des
+        this.agi = this.agi + agi
         this.int = this.int + int
-        console.log(`Después de un arduo entrenamiento estos son tus nuevos niveles: ATK: ${this.atk}, DEF: ${this.def}, DES: ${this.des}, INT: ${this.int}`)
+        console.log(`Después de un arduo entrenamiento estos son tus nuevos niveles: ATK: ${this.atk}, DEF: ${this.def}, AGI: ${this.agi}, INT: ${this.int}`)
     }
-    ataque(characterAtk, characterDes, enemyDef){
-        return (enemyLife) => enemyLife - ((characterAtk * (characterDes * 1.25)) - (enemyDef * 2))
+    ataque(characterAtk, characterAgi, enemyDef){
+        return (enemyLife) => enemyLife - ((characterAtk * (characterAgi * 1.25)) - (enemyDef * 2))
     }
 }
 
@@ -29,7 +39,6 @@ let character = new Race (0, 'Desconocido', 0, 0, 0, 0, 0, 0, 'Desconocido')
 const human = new Race(1, 'Humano', 3, 3, 2, 2, 2, 50, 'Gardan');
 const elf = new Race(2, 'Elfo', 2, 2, 3, 4, 1, 80, 'Eardel Da');
 const dwarf = new Race(3, 'Enano', 5, 3, 1, 1, 2, 50, 'Babkhaz');
-
 const races = [human, elf, dwarf];
 
 console.log(`Qué tal ${name}! El camino que debes recorrer es largo hasta llegar a la Ciudad Imperial de Vaesh Nall. Aquí estamos en la ciudad de Conven, que se caracteriza por ser una ciudad a dónde se acercan muchos viajeros. Cuéntame... de dónde proviene tu linaje?`);
@@ -37,14 +46,14 @@ for(const race of races){
     console.log(race.id, race.type)
 }
 
-let optRace = prompt('Elige tu raza indicando el número correspondiente')
+// let optRace = prompt('Elige tu raza indicando el número correspondiente')
 
 if(optRace == '1'){
     character.atk = human.atk;
     character.def = human.def;
-    character.des = human.des;
+    character.agi = human.agi;
     character.int = human.int;
-    character.car = human.car 
+    character.char = human.char 
     character.life = human.life;
     character.type = human.type;
     character.city = human.city;
@@ -52,9 +61,9 @@ if(optRace == '1'){
 }else if(optRace =='2'){
     character.atk = elf.atk;
     character.def = elf.def;
-    character.des = elf.des;
+    character.agi = elf.agi;
     character.int = elf.int;
-    character.car = elf.car;
+    character.char = elf.char;
     character.life = elf.life;
     character.type = elf.type;
     character.city = elf.city;
@@ -62,9 +71,9 @@ if(optRace == '1'){
 }else if(optRace =='3'){
     character.atk = dwarf.atk;
     character.def = dwarf.def;
-    character.des = dwarf.des;
+    character.agi = dwarf.agi;
     character.int = dwarf.int;
-    character.car = dwarf.car;
+    character.char = dwarf.char;
     character.life = dwarf.life;
     character.type = dwarf.type;
     character.city = dwarf.city;
@@ -78,7 +87,7 @@ const styles = [' 1. Fuerza bruta', ' 2. Perspicaz', ' 3. Cuidadoso']
 for(let i=0; i<=2; i++){
     console.log(styles[i]);
 }
-let optStyle = prompt('Elige tu estilo de personaje indicando el número correspondiente:')
+// let optStyle = prompt('Elige tu estilo de personaje indicando el número correspondiente:')
 
 if(optStyle =='1'){
     character.entrenamiento(3,1,1,0)
@@ -91,25 +100,26 @@ if(optStyle =='1'){
 console.log('Y? Que te pareció el entrenamiento? No es mucho pero al menos te ayudará a salir sin estar tan desprotegido.');
 console.log('Ahora, para practicar vamos a entrenar con este Baradih de las llanuras.');
 console.log('*Laudino trae una especie de puercoespín que te mira desafiante, con ganas de atacarte*');
-console.log('Ahora pelearás contra este Baradih... Suerte!');
+console.log('Ahora pelearás contra este Skerel... Suerte!');
 
 class Enemy {
-    constructor(id, name, atk, def, des, int, life, level){
+    constructor(id, name, atk, def, agi, int, life, level){
         this.id = id
         this.name = name
         this.atk = (level * 1.3) * atk;
         this.def = (level * 1.3) * def;
-        this.des = (level * 1.5) * des;
+        this.agi = (level * 1.5) * agi;
         this.int = (level * 1.3) * int;
-        this.life = (level * 5) * life;
+        this.life = (level * 3) * life;
         this.level = level;
+    }
+    ataque(enemyAtk, enemyLevel, characterDef){
+        return (characterLife) => characterLife - ((enemyAtk * (enemyLevel * 1.25)) - (characterDef * 2.2))
     }
 }
 
-let baradih = new Enemy (1, 'Baradih', 1, 2, 2, 1, 20, 1)
+let skerel = new Enemy (1, 'Skerel', 1, 2, 2, 1, 20, 1)
+const enemies = [skerel]
+let ataqueSkerel = character.ataque(character.atk, character.agi, skerel.def)
 
-const enemies = [baradih]
-
-let ataqueBaradih = character.ataque(character.atk, character.des, baradih.def)
-
-console.log(`Atacaste al Baradih y ahora tiene LIFE: ${(ataqueBaradih(baradih.life))}`)
+// let choice = prompt('Ingresa 1 para "Atacar" o 2 para "Huir"')
