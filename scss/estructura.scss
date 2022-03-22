@@ -1,0 +1,42 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(https://i.pinimg.com/originals/23/1c/02/231c02cded02b2bf1fb83308988d29fc.jpg);
+    h1{
+        font-family: 'Mea Culpa', cursive;
+        font-size: 3rem;
+        font-style: italic;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    p{
+        font-size: 1.2rem;
+        font-style: italic;
+        text-align: center;
+        padding: 5px 15px 5px;
+        font-family: 'Bellefair', serif;
+    }
+    input{
+        font-family: 'Bellefair', serif;
+        font-size: 0.8rem;
+    }
+    .textBox{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        button{   
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 2px;
+            background-color: rgb(151, 151, 151);
+            border-radius: 3px;
+            font-family: 'Share Tech Mono', monospace;
+        }
+    }
+}
+

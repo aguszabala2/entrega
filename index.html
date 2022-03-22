@@ -4,12 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Mea+Culpa&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/estilo.css">
     <title>El camino hacia Vaesh Nall</title>
 </head>
 <body>
-    <h1><strong>El camino hacia Vaesh Nall</strong></h1>
-    <p id="start">Bienvenido! Esperamos que disfrutes tu travesía y que en ella encuentres tu mejor fortuna.</p>
-    <button id="init">Inicia tu Aventura</button>
-    <script src="./js/juego.js"></script>
+    <section id="container">
+        <div id="options" class="textBox">    
+            <h1>El camino hacia Vaesh Nall</h1>
+                <div id="start">    
+                    <p>Bienvenido viajero! Aquí comienza tu aventura.</p>
+                </div>
+            <button id="next">Inicia tu Aventura</button>
+        </div>
+        <div id="story" class="textBox">
+        </div>
+    </section>
+        <script src="./js/juego.js"></script>
 </body>
 </html>

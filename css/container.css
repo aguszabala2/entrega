@@ -1,0 +1,15 @@
+#container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50% 50%;
+      grid-template-columns: 50% 50%;
+  -ms-grid-rows: 100%;
+      grid-template-rows: 100%;
+  -webkit-column-gap: 0px;
+          column-gap: 0px;
+  margin: 40px 40px 80px;
+  padding: 30px 15px 30px;
+  background-image: url(http://cdn.textures4photoshop.com/tex/thumbs/grunge-stained-old-paper-texture-130.jpg);
+  height: 500px;
+  border: solid 0.5px #000;
+}

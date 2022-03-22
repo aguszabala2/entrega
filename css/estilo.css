@@ -1,0 +1,79 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background-image: url(https://i.pinimg.com/originals/23/1c/02/231c02cded02b2bf1fb83308988d29fc.jpg);
+}
+
+body h1 {
+  font-family: 'Mea Culpa', cursive;
+  font-size: 3rem;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+body p {
+  font-size: 1.2rem;
+  font-style: italic;
+  text-align: center;
+  padding: 5px 15px 5px;
+  font-family: 'Bellefair', serif;
+}
+
+body input {
+  font-family: 'Bellefair', serif;
+  font-size: 0.8rem;
+}
+
+body .textBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .textBox button {
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 2px;
+  background-color: #979797;
+  border-radius: 3px;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+#container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50% 50%;
+      grid-template-columns: 50% 50%;
+  -ms-grid-rows: 100%;
+      grid-template-rows: 100%;
+  -webkit-column-gap: 0px;
+          column-gap: 0px;
+  margin: 40px 40px 80px;
+  padding: 30px 15px 30px;
+  background-image: url(http://cdn.textures4photoshop.com/tex/thumbs/grunge-stained-old-paper-texture-130.jpg);
+  height: 500px;
+  border: solid 0.5px #000;
+}
+
+#story p {
+  font-size: 1rem;
+}
+
+#opciones1 {
+  font-size: 1rem;
+  color: #720b0b;
+}
