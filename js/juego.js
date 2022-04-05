@@ -74,6 +74,7 @@ function nombramiento(){
     let name = input.value
     const story1 = document.createElement("p")
     story1.innerHTML = `<p>Qué tal ${name}! El camino que debes recorrer es largo hasta llegar a la Ciudad Imperial de Vaesh Nall. Aquí estamos en la ciudad de <b>Conven</b>, que se caracteriza por ser una ciudad a dónde se acercan muchos viajeros. Cuéntame... de dónde proviene tu linaje?</p>`
+    story1.setAttribute("id", "story1")
     story.appendChild(story1)
     
     // Cambio el mensaje para que quede acorde a la segunda eleccion ofrecida
@@ -349,10 +350,21 @@ function primerDestino(){
     if(destino == "1"){
         
     }else if(destino == "2"){
+
+        const story5 = document.createElement("div")
+        story5.innerHTML = '<p>Muy buenos días. Espero se encuentre muy bien. Aquí tenemos las mejores opciones para los viajeros que decidan emprender su viaje. Por favor, pasen y vean nuestros productos.</p>' 
+        story.appendChild(story5)
+
         fetch("../data/shop.json")
             .then( (res) => res.json())
             .then( (data) => {
-                console.log(data)
+                data.forEach( (prod) => {
+
+                const products = document.createElement("p")
+                products.innerHTML = `<b>${prod.Producto}</b>  ${prod.Precio}`
+                products.setAttribute("id", "products")
+                story.appendChild(products)
+                });
             })
     }else if(destino != "1" && destino != "2"){
 
