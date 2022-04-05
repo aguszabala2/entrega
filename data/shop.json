@@ -1,0 +1,22 @@
+[
+    {
+        "Producto": "Poción de Vida",
+        "Precio": 20,
+        "Descripción": "Poción que regenera la vida"
+        },
+    {
+        "Producto": "Poción de Ataque",
+        "Precio": 30,
+        "Descripción": "Poción que da +1 de Ataque"
+        },
+    {
+        "Producto": "Poción de Defensa",
+        "Precio": 30,
+        "Descripción": "Poción que da +2 de Defensa"
+        },
+    {
+        "Producto": "Libro",
+        "Precio": 30,
+        "Descripción": "Elemento que te provee de +1 Inteligencia"
+        }
+]

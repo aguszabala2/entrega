@@ -349,7 +349,11 @@ function primerDestino(){
     if(destino == "1"){
         
     }else if(destino == "2"){
-        
+        fetch("../data/shop.json")
+            .then( (res) => res.json())
+            .then( (data) => {
+                console.log(data)
+            })
     }else if(destino != "1" && destino != "2"){
 
     }
