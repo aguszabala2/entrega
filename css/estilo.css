@@ -82,9 +82,16 @@ body .textBox input {
 
 #products {
   font-size: 0.7rem;
-  color: #6d049e;
+  color: #3a0353;
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+#description {
+  font-size: 0.6rem;
+  color: black;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 #opciones1 {

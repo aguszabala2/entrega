@@ -339,7 +339,11 @@ function elegirEstilo(){
         next.removeEventListener("click", elegirEstilo)
         next.addEventListener("click", primerDestino)
     }else if(style != "1" && style != "2" && style != "3"){
-        alert('Elige un número válido')
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Ingresa un número válido',
+        })
     }
 }
 
@@ -350,30 +354,30 @@ function primerDestino(){
     if(destino == "1"){
         
     }else if(destino == "2"){
-
+        story.innerText = '' 
         const story5 = document.createElement("div")
-        story5.innerHTML = '<p>Muy buenos días. Espero se encuentre muy bien. Aquí tenemos las mejores opciones para los viajeros que decidan emprender su viaje. Por favor, pasen y vean nuestros productos.</p>' 
+        story5.innerHTML = '<p>Muy buenos días. Espero se encuentre muy bien. Aquí tenemos las mejores opciones para los viajeros que decidan emprender su viaje. Por favor, pasen y vean nuestros productos. Siempre recomiendo a los viajeros primerizos que se lleven una buena poción de vida.</p>' 
         story.appendChild(story5)
 
+        // Trae los datos de los elementos de la Tienda ubicados en el .json
         fetch("../data/shop.json")
             .then( (res) => res.json())
             .then( (data) => {
                 data.forEach( (prod) => {
-
+                
+                // Añade los productos al DOM
                 const products = document.createElement("p")
-                products.innerHTML = `<b>${prod.Producto}</b>  ${prod.Precio}`
+                products.innerHTML = `<b>${prod.Id}. ${prod.Producto}</b> ${prod.Precio}
+                                    <p id="description">${prod.Descripcion}</p>`
                 products.setAttribute("id", "products")
                 story.appendChild(products)
                 });
             })
     }else if(destino != "1" && destino != "2"){
-
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Ingresa un número válido',
+        })
     }
 }
-
-
-// let skerel = new Enemy (1, 'Skerel', 1, 2, 2, 1, 20, 1)
-// const enemies = [skerel]
-// let ataqueSkerel = character.ataque(character.atk, character.agi, skerel.def)
-
-// let choice = prompt('Ingresa 1 para "Atacar" o 2 para "Huir"')

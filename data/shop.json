@@ -1,22 +1,26 @@
 [
     {
+        "Id": 1,
         "Producto": "Poción de Vida",
         "Precio": 20,
-        "Descripción": "Poción que regenera la vida"
+        "Descripcion": "Poción que regenera la vida"
         },
     {
+        "Id": 2,
         "Producto": "Poción de Ataque",
         "Precio": 30,
-        "Descripción": "Poción que da +1 de Ataque"
+        "Descripcion": "Poción que da +1 de Ataque"
         },
     {
+        "Id": 3,
         "Producto": "Poción de Defensa",
         "Precio": 30,
-        "Descripción": "Poción que da +2 de Defensa"
+        "Descripcion": "Poción que da +2 de Defensa"
         },
     {
+        "Id": 4,
         "Producto": "Libro",
         "Precio": 30,
-        "Descripción": "Elemento que te provee de +1 Inteligencia"
+        "Descripcion": "Elemento que te provee de +1 Inteligencia"
         }
 ]
