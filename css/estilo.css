@@ -5,25 +5,33 @@
           box-sizing: border-box;
 }
 
-body {
-  background-image: url(https://i.pinimg.com/originals/23/1c/02/231c02cded02b2bf1fb83308988d29fc.jpg);
+.normalBackground {
+  background-image: url("https://i.pinimg.com/originals/23/1c/02/231c02cded02b2bf1fb83308988d29fc.jpg");
 }
 
-body h1 {
+.normalBackground h1 {
   font-family: 'Mea Culpa', cursive;
-  font-size: 3rem;
+  font-size: 4rem;
   font-style: italic;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
-body p {
+.normalBackground h2 {
+  font-family: 'Mea Culpa', cursive;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.normalBackground p {
   text-align: center;
   padding: 2px 15px 2px;
   font-family: 'Bellefair', serif;
+  margin-bottom: 3px;
 }
 
-body .textBox {
+.normalBackground .textBox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -36,7 +44,7 @@ body .textBox {
           align-items: center;
 }
 
-body .textBox button {
+.normalBackground .textBox button {
   font-size: 0.7rem;
   font-weight: bold;
   text-align: center;
@@ -46,11 +54,15 @@ body .textBox button {
   font-family: 'Share Tech Mono', monospace;
 }
 
-body .textBox input {
+.normalBackground .textBox input {
   font-family: 'Bellefair', serif;
   font-size: 0.8rem;
   text-align: center;
   margin-bottom: 5px;
+}
+
+.normalBackground .textBox abbr {
+  text-decoration: none;
 }
 
 #container {
@@ -67,6 +79,10 @@ body .textBox input {
   background-image: url(http://cdn.textures4photoshop.com/tex/thumbs/grunge-stained-old-paper-texture-130.jpg);
   height: 580px;
   border: solid 0.5px #000;
+}
+
+#story {
+  overflow-y: auto;
 }
 
 #story p {
@@ -102,4 +118,5 @@ body .textBox input {
 #personaje {
   font-size: 1rem;
   margin-top: 15px;
+  overflow-x: auto;
 }

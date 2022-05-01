@@ -4,20 +4,27 @@
     box-sizing: border-box;
 }
 
-body{
-    background-image: url(https://i.pinimg.com/originals/23/1c/02/231c02cded02b2bf1fb83308988d29fc.jpg);
+.normalBackground{
+    background-image: url("https://i.pinimg.com/originals/23/1c/02/231c02cded02b2bf1fb83308988d29fc.jpg");
     h1{
         font-family: 'Mea Culpa', cursive;
-        font-size: 3rem;
+        font-size: 4rem;
         font-style: italic;
         text-align: center;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
+    }
+    h2{
+        font-family: 'Mea Culpa', cursive;
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 8px;
     }
     p{
         text-align: center;
         padding: 2px 15px 2px;
         font-family: 'Bellefair', serif;
-    }
+        margin-bottom: 3px;
+        }
     .textBox{
         display: flex;
         flex-direction: column;
@@ -36,6 +43,9 @@ body{
             font-size: 0.8rem;
             text-align: center;
             margin-bottom: 5px;
+        }
+        abbr{
+            text-decoration: none;
         }
     }
 }

@@ -1,3 +1,7 @@
+#story {
+  overflow-y: auto;
+}
+
 #story p {
   font-size: 1rem;
 }
