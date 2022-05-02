@@ -9,11 +9,11 @@ next.addEventListener("click", comienzoDeJuego)
 
 // Funciones de elecciones
 function comienzoDeJuego(){
-    const mensaje1 = document.createElement("p");
-    mensaje1.innerHTML = '<p id="mensaje1">Bienvenido! Ingresa tu nombre</p><input id="enterName">'
-    start.appendChild(mensaje1)
+    const msg1 = document.createElement("p");
+    msg1.innerHTML = '<p id="msg1">Ingresa tu nombre</p><input id="enterName">'
+    start.appendChild(msg1)
 
-    // Renombro el boton para activar la segunda funcion
+    // Renombro el boton para activar la funcion
     next.innerText = 'Elegir nombre'
 
     // Habilito el boton para darle un nuevo funcionamiento
@@ -24,19 +24,20 @@ function comienzoDeJuego(){
 function nombramiento(){
     const input = document.getElementById("enterName")
     let name = input.value
-    const story1 = document.createElement("p")
-    story1.innerHTML = `<p>Qué tal ${name}! El camino que debes recorrer es largo hasta llegar a la Ciudad Imperial de Vaesh Nall. Aquí estamos en la ciudad de <b>Conven</b>, que se caracteriza por ser una ciudad a dónde se acercan muchos viajeros. Cuéntame... de dónde proviene tu linaje?</p>`
-    story1.setAttribute("id", "story1")
-    story.appendChild(story1)
+    const init = document.createElement("div")
+    init.innerHTML = `<p>¡Bienvenido ${name}! En todas las ciudades y pueblos se comenta que en la intimidad del Vaesh Nall —el imponente Palacio Real— el rey Vyncent piensa en abdicar al trono para casarse con su consejera, Sabel Paine.</p><p>Se comenta que tanto sus hijos como algunos Señores de las Altas Ciudades pretenden la Corona y estarían dispuestos a actuar ahora mismo.</p>
+    <p>Tú... <strong>¿estás listo para ver qué papel tienes en este conflicto?</strong></p>`
+    init.setAttribute("id", "init")
+    story.appendChild(init)
     
-    // Cambio el mensaje para que quede acorde a la segunda eleccion ofrecida
-    const mensaje1 = document.getElementById("mensaje1")
-    mensaje1.innerHTML = '<p>Elige tu raza indicando el número correspondiente.</p>'
+    // Cambio el mensaje para que quede acorde a la eleccion ofrecida
+    const msg1 = document.getElementById("msg1")
+    msg1.innerHTML = '<p>Elige tu raza indicando el número correspondiente.</p>'
     
     // Creo el texto que ofrece opciones
-    const opciones1 = document.createElement("p")
-    opciones1.innerHTML = `<p id="opciones1"><abbr title="Los Humanos son la raza más numerosa del mundo, tienen habilidades balanceadas y ocupan la mayoría de los cargos públicos.">1. ${races[0].type}</abbr>    2. ${races[1].type}    3. ${races[2].type}</p>`
-    mensaje1.appendChild(opciones1)
+    const options1 = document.createElement("p")
+    options1.innerHTML = `<p id="options1"><abbr title="Los Humanos son la raza más numerosa del mundo, tienen habilidades balanceadas y ocupan la mayoría de los cargos públicos.">1. ${races[0].type}</abbr>    <abbr title="Los Elfos son criaturas tribales muy inteligentes y habilidosas, viven integradas a los Humanos en las grandes ciudades. Tienen habilidades orientadas a la inteligencia y a la vitalidad.">2. ${races[1].type}</abbr>    <abbr title="Los Enanos, a pesar de su baja estatura, son feroces guerreros e increíbles constructores. Sus habilidades de combate son extraordinarias.">3. ${races[2].type}</abbr></p>`
+    msg1.appendChild(options1)
     
     // Almacena el nombre en el storage para utilizarlo despues
     sessionStorage.setItem('Nombre', name)
@@ -62,37 +63,57 @@ function elegirRaza(){
         character.type = human.type;
         character.city = human.city;
         
+        // Cambia el background
+        const background = document.getElementById("background")
+        background.classList.remove("normalBackground")
+        background.setAttribute('class', 'humanBackground')
+
         // Texto personalizado segun la raza elegida
-        const story2 = document.createElement("p")
-        story2.innerText = 'Perfecto! Por tus pintas supuse que eras un humano, pero no quería arriesgar. Deberíamos ir hacia el Campo de Entrenamiento para que elijas en qué quieres perfeccionarte.'
-        story.appendChild(story2)
-        story2.setAttribute('id', 'story2')
+        const human1 = document.createElement("div")
+        human1.innerHTML = '<p><em>*Te despiertas y ves las casas rústicas de madera a tu alrededor. Un señor fornido, con bigote, se acerca hacia tí haciéndote señas amistosas con el brazo*</em></p><p><strong>Desconocido:</strong> ¡Qué tal, joven! Veo que estás un poco perdido... Soy <strong>Tomdeb</strong>, el alcalde de este pequeño pueblo de humanos llamado <strong>Forlonde</strong>. Como verás no tenemos demasiadas instalaciones, pero puedo guiarte para que des tus primeros pasos aquí.</p>'
+        story.appendChild(human1)
+        human1.setAttribute('id', 'human1')
 
-        // Texto para continuar la historia
-        const story3 = document.createElement("p")
-        story3.innerHTML = '<em>*Se acerca un hombre de mediana edad, robusto, armado con una espada*</em> Qué tal? Qué hacen por aquí? No es común en estos días ver viajeros que quieran entrenar, todos se están yendo a las costas por las vacaciones. Disculpen! No me presente: soy <b>Laudino, el Gobernador de Conven</b>. Si has venido a entrenar, primero necesitaré que me digas cuál quisieras que fuera tu estilo.'
-        story.appendChild(story3)
+        setTimeout(() => {
+            const human2 = document.createElement("div")
+            human2.innerHTML = '<p><em>*Comienzas a caminar tranquilamente siguiendo a Tomdeb*</em></p><p><strong>Tomdeb:</strong> ¿Qué deseas hacer primero? Imagino que tu primer objetivo es llegar hasta <strong>Gosa</strong>, en el centro del continente, en donde se están juntando las personas más importantes del Imperio pero primero hay un largo camino que recorrer.</p><p>Si tu deseo es <strong class="choices">ser un valeroso guerrero y dejar tu nombre escrito en la historia, podemos visitar a Anders</strong>, un militar retirado de este pueblo, para que te ayude con tu entrenamiento; <strong class="choices">si por el contrario deseas influir en las decisiones políticas que guían nuestra vida, deberías ir con Laserie</strong>, mi consejera, que sirvió fielmente al rey Fingaldor, padre del Rey Vyncent, hasta su muerte.</p>'
+            story.appendChild(human2)
+            human2.setAttribute('id', 'human2')
 
-        // Cambio de mensaje de eleccion
-        const mensaje1 = document.getElementById("mensaje1")
-        mensaje1.innerHTML = '<p>Elige qué tipo de estilo de pelea quieres entrenar indicando el número correspondiente.</p>'
+            // Cambio de mensaje de eleccion
+            const msg1 = document.getElementById("msg1")
+            msg1.innerHTML = '<p>Elige qué camino deseas tomar indicando el número correspondiente.</p>'
 
-        // Cambio de opciones
-        const opciones1 = document.createElement("p")
-        opciones1.innerHTML = '<p id="opciones1">1. Fuerza Bruta   2. Perspicaz   3. Cuidadoso</p>'
-        mensaje1.appendChild(opciones1)
+            // Cambio de opciones
+            const options1 = document.createElement("p")
+            options1.innerText = '1. Anders   2. Laserie'
+            msg1.appendChild(options1)
+            options1.setAttribute('id', 'options1')
+        }, 3000);
 
         // Muestreo de habilidades del personaje
-        const personaje = document.createElement("div")
-        personaje.innerHTML = `<p><b>Atributos:</b></p><p>Ataque: <small><em>${character.atk}</em></small></p><p>Defensa: <small><em>${character.def}</em></small></p><p>Agilidad: <small><em>${character.agi}</em></small></p><p>Inteligencia: <small><em>${character.int}</em></small></p><p>Carisma: <small><em>${character.char}</em></small></p><p>Vida: <small><em>${character.life}</em></small></p>`
-        personaje.setAttribute("id", "personaje")
-        options.appendChild(personaje)
+        const cha = document.createElement("div")
+        cha.innerHTML = `<button id="toggle">Atributos</button><ul id="skills" style="display: none"><li>Ataque:<small> ${character.atk}</small></li><li>Defensa:<small> ${character.def}</small></li><li>Agilidad:<small> ${character.agi}</small></li><li>Inteligencia:<small> ${character.int}</small></li><li>Carisma:<small> ${character.char}</small></li><li>Vida:<small> ${character.life}</small></li></ul>`
+        cha.setAttribute("id", "skillsList")
+        options.appendChild(cha)
+        
+        // Mostrar u ocultar Atributos
+        const toggle = document.getElementById("toggle")
+        const skills = document.getElementById("skills")
+        toggle.addEventListener("click", abrirAtributos);
+        function abrirAtributos(){
+            if (skills.style.display === "none") {
+                skills.style.display = "block"
+            } else{
+                skills.style.display = "none"
+            }    
+        }   
 
         // Almacena la raza en el storage para utilizarla despues
         sessionStorage.setItem('Raza', 'Humano')
 
         // Comienzo de la siguiente funcion
-        next.innerText = 'Elige tu estilo de personaje'
+        next.innerText = 'Elige tu camino'
         next.removeEventListener("click", elegirRaza)
         next.addEventListener("click", elegirEstilo)
     }else if(name == "2"){
@@ -105,38 +126,64 @@ function elegirRaza(){
         character.type = elf.type;
         character.city = elf.city;
 
+        // Cambia el background
+        const background = document.getElementById("background")
+        background.classList.remove("normalBackground")
+        background.setAttribute('class', 'elfBackground')
+
         // Texto personalizado segun la raza elegida
-        const story2 = document.createElement("p")
-        story2.innerText = 'Increíble. No he visto demasiados elfos en mi vida, porque ya no son tan habituales por estas tierras, pero me alegra que estés aquí. Deberíamos ir hacia el Campo de Entrenamiento para que elijas en qué quieres perfeccionarte.'
-        story.appendChild(story2)
-        story2.setAttribute('id', 'story2')
+        const elf1 = document.createElement("div")
+        elf1.innerHTML = '<p><em>*Te levantas por el ruido de los pájaros a tu alrededor, y mientras te desperezas sobre el césped un elfo de gran altura, blanco, vestido con una toga impoluta, te mira con seriedad. Mientras te pones de pie, el elfo se acomoda el largo cabello blanco y comienza a hablarte*</em></p><p><strong>Desconocido:</strong> Buenos días, joven. Yo soy <strong>Indingor</strong>, y soy uno de los líderes de este pequeño pueblo llamado <strong>Dorwine</strong>. Como podrás adivinar el pueblo está un poco alborotado por los sucesos que comienzan a desarrollarse alrededor del <strong>Vaesh Nall</strong>.</p>'
+        story.appendChild(elf1)
+        elf1.setAttribute('id', 'elf1')
 
-        // Texto para continuar la historia
-        const story3 = document.createElement("p")
-        story3.innerHTML = '<em>*Se acerca un hombre de mediana edad, robusto, armado con una espada*</em> Qué tal? Qué hacen por aquí? No es común en estos días ver viajeros que quieran entrenar, todos se están yendo a las costas por las vacaciones. Disculpen! No me presente: soy <b>Laudino, el Gobernador de Conven</b>. Si has venido a entrenar, primero necesitaré que me digas cuál quisieras que fuera tu estilo.'
-        story.appendChild(story3)
+        setTimeout(() => {
+            const elf2 = document.createElement("div")
+            elf2.innerHTML = '<p><em>*Indingor te hace un gesto con la mano para que lo acompañes en su caminata*</em></p><p><strong>Indingor:</strong> Nuestro pueblo es pequeño y por eso aún estamos debatiendo si nos uniremos a algún Alto Señor o a algún hijo del Rey Vyncent. Por mí parte, preferiría que apoyaramos al <strong>Alto Señor Neremyn</strong> de <strong>Ael Serine</strong>, ya que es el único que siempre apoyó a los elfos en todas nuestras campañas, pero eso no depende de mí.</p>'
+            story.appendChild(elf2)
+            elf2.setAttribute('id', 'elf2')
+        }, 3000);
+        
+        setTimeout(() => {
+            const elf2 = document.createElement("div")
+            elf2.innerHTML = '<p><em>*Indingor hace un gesto con el rostro indicando inconformidad, pero rápidamente se convierte en un gesto amable al saludar a los transeúntes*</em></p><p><strong>Indingor:</strong> Ahora mismo, lo que puedo hacer por tí es acompañarte a <strong class="choices">la Biblioteca local si es que quieres informarte sobre algún asunto</strong>, o <strong class="choices">al Cuartel, si es que quieres entrenarte para ser un gran guerrero.</strong></p>'
+            story.appendChild(elf2)
+            elf2.setAttribute('id', 'elf2')
 
-        // Cambio de mensaje de eleccion
-        const mensaje1 = document.getElementById("mensaje1")
-        mensaje1.innerHTML = '<p>Elige qué tipo de estilo de pelea quieres entrenar indicando el número correspondiente.</p>'
+            // Cambio de mensaje de eleccion
+            const msg1 = document.getElementById("msg1")
+            msg1.innerHTML = '<p>Elige qué camino deseas tomar indicando el número correspondiente.</p>'
 
-        // Cambio de opciones
-        const opciones1 = document.createElement("p")
-        opciones1.innerHTML = '<p id="opciones1">1. Fuerza Bruta   2. Perspicaz   3. Cuidadoso</p>'
-        mensaje1.appendChild(opciones1)
+            // Cambio de opciones
+            const options1 = document.createElement("p")
+            options1.innerText = '1. Biblioteca local   2. Cuartel militar'
+            msg1.appendChild(options1)
+            options1.setAttribute('id', 'options1')
+        }, 6000);
 
         // Muestreo de habilidades del personaje
-        const options = document.getElementById("options")
-        const personaje = document.createElement("div")
-        personaje.innerHTML = `<p><b>Atributos:</b></p><p>Ataque: <small><em>${character.atk}</em></small></p><p>Defensa: <small><em>${character.def}</em></small></p><p>Agilidad: <small><em>${character.agi}</em></small></p><p>Inteligencia: <small><em>${character.int}</em></small></p><p>Carisma: <small><em>${character.char}</em></small></p><p>Vida: <small><em>${character.life}</em></small></p>`
-        personaje.setAttribute("id", "personaje")
-        options.appendChild(personaje)
+        const cha = document.createElement("div")
+        cha.innerHTML = `<button id="toggle">Atributos</button><ul id="skills" style="display: none"><li>Ataque:<small> ${character.atk}</small></li><li>Defensa:<small> ${character.def}</small></li><li>Agilidad:<small> ${character.agi}</small></li><li>Inteligencia:<small> ${character.int}</small></li><li>Carisma:<small> ${character.char}</small></li><li>Vida:<small> ${character.life}</small></li></ul>`
+        cha.setAttribute("id", "skillsList")
+        options.appendChild(cha)
+        
+        // Mostrar u ocultar Atributos
+        const toggle = document.getElementById("toggle")
+        const skills = document.getElementById("skills")
+        toggle.addEventListener("click", abrirAtributos);
+        function abrirAtributos(){
+            if (skills.style.display === "none") {
+                skills.style.display = "block"
+            } else{
+                skills.style.display = "none"
+            }    
+        }   
 
         // Almacena la raza en el storage para utilizarla despues
         sessionStorage.setItem('Raza', 'Elfo')
 
         // Comienzo de la siguiente funcion
-        next.innerText = 'Elige tu estilo de personaje'
+        next.innerText = 'Elige tu camino'
         next.removeEventListener("click", elegirRaza)
         next.addEventListener("click", elegirEstilo)
     }else if(name == "3"){
@@ -149,32 +196,58 @@ function elegirRaza(){
         character.type = dwarf.type;
         character.city = dwarf.city;
 
+        // Cambia el background
+        const background = document.getElementById("background")
+        background.classList.remove("normalBackground")
+        background.setAttribute('class', 'dwarfBackground')
+        
         // Texto personalizado segun la raza elegida
-        const story2 = document.createElement("p")
-        story2.innerText = 'Por las barbas de Losir! Qué extraño ver a un enano por aquí, no suelen salir de las montañas, pero de todas formas, bienvenido. Deberíamos ir hacia el Campo de Entrenamiento para que elijas en qué quieres perfeccionarte.'
-        story.appendChild(story2)
-        story2.setAttribute('id', 'story2')
-        
-        // Texto para continuar la historia
-        const story3 = document.createElement("p")
-        story3.innerHTML = '<em>*Se acerca un hombre de mediana edad, robusto, armado con una espada*</em> Qué tal? Qué hacen por aquí? No es común en estos días ver viajeros que quieran entrenar, todos se están yendo a las costas por las vacaciones. Disculpen! No me presente: soy <b>Laudino, el Gobernador de Conven</b>. Si has venido a entrenar, primero necesitaré que me digas cuál quisieras que fuera tu estilo.'
-        story.appendChild(story3)
-        
-        // Cambio de mensaje de eleccion
-        const mensaje1 = document.getElementById("mensaje1")
-        mensaje1.innerHTML = '<p>Elige qué tipo de estilo de pelea quieres entrenar indicando el número correspondiente.</p>'
+        const dwarf1 = document.createElement("div")
+        dwarf1.innerHTML = '<p><em>*Te levantas de golpe cuando un grito desde muy cerca te sorprende. Parado frente a tí hay un enano imponente, vestido con una armadura rojiza con detalles en plateado. Parece mayor, y te mira con un gesto adusto mientras te pones de pie rápidamente*</em></p><p><strong>Desconocido:</strong> ¡Vamos, vamos! ¡Deja de holgazanear y levantate! ¡No hay tiempo! El <strong>Jefe Wunther</strong> está llamando a todos los enanos de la aldea para comenzar nuestro viaje hacia <strong>Gosa</strong>, donde nos uniremos con el <strong>Alto Señor Havard</strong> de <strong>Montaumier</strong>, que reclamará su derecho al Trono del Vaesh Nall.</p>'
+        story.appendChild(dwarf1)
+        dwarf1.setAttribute('id', 'dwarf1')
 
-        // Cambio de opciones
-        const opciones1 = document.createElement("p")
-        opciones1.innerHTML = '<p id="opciones1">1. Fuerza Bruta   2. Perspicaz   3. Cuidadoso</p>'
-        mensaje1.appendChild(opciones1)
+        setTimeout(() => {
+            const dwarf2 = document.createElement("div")
+            dwarf2.innerHTML = '<p><em>*El enano desconocido te da una fuerte palmada en la espalda y te insta a caminar a su lado*</em></p><p>¡Vamos, vamos! ¡No puedo explicártelo todo! Ahora iremos con <strong>Diogo</strong>, nuestro reclutador principal, para que te enseñe lo básico... ¡Vamos, vamos!</p>'
+            story.appendChild(dwarf2)
+            dwarf2.setAttribute('id', 'dwarf2')
+        }, 3000);
+
+        setTimeout(() => {
+            const dwarf3 = document.createElement("div")
+            dwarf3.innerHTML = '<p><em>*Llegan a un campo abierto donde un gran número de enanos se lanzan espadazos y hachazos entre ellos. Un enano resalta sobre ellos por su larga barba rubia y reluciente hacha, por lo que asumes que es <strong>Diogo</strong>, y apenas divisa al enano que te acompaña comienza a caminar con una sonrisa hacia ti.*</em></p><p><strong>Diogo</strong>¡Isal! ¡Qué alegría verte! Veo que me traes otro recluta... <em>*Diogo te mira y asiente con la cabeza*</em> ¡¿Cómo andas chico?! ¿De dónde te sacó Isal? Bueno, no importa, lo primero es lo primero, necesitas empezar a entrenar lo antes posible.</p><p>¿Qué tipo de guerrero quieres ser? ¿Elegiras <strong class="choices">batir a tus enemigos a base de fuerza bruta</strong>, o tal vez <strong class="choices">les ganarás con tu inteligencia</strong>, o preferirás <strong class="choices">defenderte y aprovechar cualquier ventaja</strong>?</p>'
+            story.appendChild(dwarf3)
+            dwarf3.setAttribute('id', 'dwarf3')
+
+            // Cambio de mensaje de eleccion
+            const msg1 = document.getElementById("msg1")
+            msg1.innerHTML = '<p>Elige qué estilo de guerrero quieres ser indicando el número correspondiente.</p>'
+
+            // Cambio de opciones
+            const options1 = document.createElement("p")
+            options1.innerText = '1. Fuerza Bruta   2. Perspicaz   3. Defensivo'
+            msg1.appendChild(options1)
+            options1.setAttribute('id', 'options1')
+        }, 6000);
         
         // Muestreo de habilidades del personaje
-        const options = document.getElementById("options")
-        const personaje = document.createElement("div")
-        personaje.innerHTML = `<p><b>Atributos:</b></p><p>Ataque: <small><em>${character.atk}</em></small></p><p>Defensa: <small><em>${character.def}</em></small></p><p>Agilidad: <small><em>${character.agi}</em></small></p><p>Inteligencia: <small><em>${character.int}</em></small></p><p>Carisma: <small><em>${character.char}</em></small></p><p>Vida: <small><em>${character.life}</em></small></p>`
-        personaje.setAttribute("id", "personaje")
-        options.appendChild(personaje)
+        const cha = document.createElement("div")
+        cha.innerHTML = `<button id="toggle">Atributos</button><ul id="skills" style="display: none"><li>Ataque:<small> ${character.atk}</small></li><li>Defensa:<small> ${character.def}</small></li><li>Agilidad:<small> ${character.agi}</small></li><li>Inteligencia:<small> ${character.int}</small></li><li>Carisma:<small> ${character.char}</small></li><li>Vida:<small> ${character.life}</small></li></ul>`
+        cha.setAttribute("id", "skillsList")
+        options.appendChild(cha)
+        
+        // Mostrar u ocultar Atributos
+        const toggle = document.getElementById("toggle")
+        const skills = document.getElementById("skills")
+        toggle.addEventListener("click", abrirAtributos);
+        function abrirAtributos(){
+            if (skills.style.display === "none") {
+                skills.style.display = "block"
+            } else{
+                skills.style.display = "none"
+            }    
+        }
 
         // Almacena la raza en el storage para utilizarla despues
         sessionStorage.setItem('Raza', 'Enano')

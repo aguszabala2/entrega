@@ -1,3 +1,9 @@
+// Funciones generales
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
 // Clases
 
 class Race {
@@ -19,7 +25,7 @@ class Race {
         this.int = this.int + int
     }
     ataque(characterAtk, characterAgi, enemyDef){
-        return (enemyLife) => enemyLife - ((characterAtk * (characterAgi * 1.25)) - (enemyDef * 2))
+        return (enemyLife) => enemyLife - ((characterAtk * (characterAgi * getRandomInt(1,7))) - (enemyDef * 2))
     }
 }
 
@@ -42,9 +48,9 @@ class Enemy {
 // Razas definidas
 
 let character = new Race (0, 'Desconocido', 0, 0, 0, 0, 0, 0, 'Desconocido')
-const human = new Race(1, 'Humano', 3, 3, 2, 2, 2, 50, 'Gardan');
+const human = new Race(1, 'Humano', 3, 3, 2, 2, 2, 50, 'Gosa');
 const elf = new Race(2, 'Elfo', 2, 2, 3, 4, 1, 80, 'Eardel Da');
 const dwarf = new Race(3, 'Enano', 5, 3, 1, 1, 2, 50, 'Babkhaz');
 const races = [human, elf, dwarf];
 
-export {character, human, elf, dwarf, races};
+export {character, human, elf, dwarf, races, getRandomInt};

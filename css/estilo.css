@@ -5,33 +5,31 @@
           box-sizing: border-box;
 }
 
-.normalBackground {
-  background-image: url("https://i.pinimg.com/originals/23/1c/02/231c02cded02b2bf1fb83308988d29fc.jpg");
-}
-
-.normalBackground h1 {
+body h1 {
   font-family: 'Mea Culpa', cursive;
   font-size: 4rem;
   font-style: italic;
+  font-weight: lighter;
   text-align: center;
   margin-bottom: 5px;
 }
 
-.normalBackground h2 {
+body h2 {
   font-family: 'Mea Culpa', cursive;
   font-size: 2.5rem;
+  font-weight: lighter;
   text-align: center;
   margin-bottom: 8px;
 }
 
-.normalBackground p {
+body p {
   text-align: center;
   padding: 2px 15px 2px;
   font-family: 'Bellefair', serif;
   margin-bottom: 3px;
 }
 
-.normalBackground .textBox {
+body .textBox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -44,7 +42,7 @@
           align-items: center;
 }
 
-.normalBackground .textBox button {
+body .textBox button {
   font-size: 0.7rem;
   font-weight: bold;
   text-align: center;
@@ -54,14 +52,14 @@
   font-family: 'Share Tech Mono', monospace;
 }
 
-.normalBackground .textBox input {
+body .textBox input {
   font-family: 'Bellefair', serif;
   font-size: 0.8rem;
   text-align: center;
   margin-bottom: 5px;
 }
 
-.normalBackground .textBox abbr {
+body .textBox abbr {
   text-decoration: none;
 }
 
@@ -89,7 +87,7 @@
   font-size: 1rem;
 }
 
-.resultados {
+.results {
   font-size: 0.7rem;
   color: #0b0bb1;
   margin-top: 5px;
@@ -110,13 +108,52 @@
   margin-bottom: 2px;
 }
 
-#opciones1 {
+.choices {
+  color: #720b0b;
+}
+
+#options1 {
   font-size: 1rem;
   color: #720b0b;
 }
 
-#personaje {
+#skillsList {
   font-size: 1rem;
+  font-family: 'Bellefair', serif;
   margin-top: 15px;
   overflow-x: auto;
+  list-style: none;
+  text-align: center;
+}
+
+#toggle {
+  text-align: center;
+  font-weight: normal;
+  border: solid 1px;
+  background-color: #af6a3e;
+  margin: 3px;
+}
+
+#skills li {
+  text-align: left;
+}
+
+.normalBackground {
+  background-image: url("../img/royal_road.png");
+  background-size: cover;
+}
+
+.humanBackground {
+  background-image: url("../img/human_city.png");
+  background-size: cover;
+}
+
+.dwarfBackground {
+  background-image: url("../img/dwarf_city.png");
+  background-size: cover;
+}
+
+.elfBackground {
+  background-image: url("../img/elf_city.png");
+  background-size: cover;
 }

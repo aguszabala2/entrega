@@ -6,7 +6,7 @@
   font-size: 1rem;
 }
 
-.resultados {
+.results {
   font-size: 0.7rem;
   color: #0b0bb1;
   margin-top: 5px;
@@ -25,4 +25,8 @@
   color: black;
   margin-top: 2px;
   margin-bottom: 2px;
+}
+
+.choices {
+  color: #720b0b;
 }

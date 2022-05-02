@@ -1,9 +1,24 @@
-#opciones1{
+#options1{
     font-size: 1rem;
     color: rgb(114, 11, 11);
 }
-#personaje{
+#skillsList{
     font-size: 1rem;
+    font-family: 'Bellefair', serif;
     margin-top: 15px;
     overflow-x: auto;
+    list-style: none;
+    text-align: center;
+}
+#toggle{
+    text-align: center;
+    font-weight: normal;
+    border: solid 1px;
+    background-color: rgb(175, 106, 62);
+    margin: 3px;
+}
+#skills{
+    li{
+        text-align: left;
+    }
 }
