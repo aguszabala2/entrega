@@ -253,9 +253,9 @@ function elegirRaza(){
         sessionStorage.setItem('Raza', 'Enano')
 
         // Comienzo de la siguiente funcion
-        next.innerText = 'Elige tu estilo de personaje'
+        next.innerText = 'Elige tu estilo de combate'
         next.removeEventListener("click", elegirRaza)
-        next.addEventListener("click", elegirEstilo)
+        next.addEventListener("click", elegirEstiloEnano)
     }else if(name != "1" && name != "2" && name != "3"){
         Swal.fire({
             icon: 'error',
@@ -265,7 +265,7 @@ function elegirRaza(){
     }
 }
 
-function elegirEstilo(){
+function elegirEstiloEnano(){
     const input = document.getElementById("enterName")
     let style = input.value
 
@@ -274,32 +274,31 @@ function elegirEstilo(){
         character.entrenamiento(3,1,1,0)
 
         // Resultados del entrenamiento
-        const resultados = document.createElement("p")
-        resultados.innerText = 'Ataque +3 | Defensa +1 | Agilidad +1'
-        resultados.setAttribute("class", "resultados")
-        story.appendChild(resultados)
+        const results = document.createElement("p")
+        results.innerText = 'Ataque +3 | Defensa +1 | Agilidad +1'
+        results.setAttribute("class", "results")
+        story.appendChild(results)
         
         // Texto de victoria en entrenamiento
-        const story4 = document.createElement("div")
-        story4.innerHTML = '<p>Increíble! Como verás, no es demasiado, pero este entrenamiento básico te ayudará a sobrellevar tus futuras aventuras. Si quieres probarte en batalla, te aconsejo que salgas de la ciudad hacia las <b>Llanuras de Barnger</b>, allí encontrarás varias bestias a las que podrás hacerles frente. Si crees que no lo necesitas puedes dirigirte hacia la <b>Tienda de Goldgard</b> y aprovisionarte de lo necesario para comenzar tu viaje. Que tengas buena suerte!</p><p><em>*Laudino se da la vuelta y camina hacia una pareja de jóvenes indicándoles como empuñar una espada*</em></p>' 
-        story.appendChild(story4)
+        const dwarf4 = document.createElement("div")
+        dwarf4.innerHTML = '<p>Increíble! Como verás, no es demasiado, pero este entrenamiento básico te ayudará a sobrellevar tus futuras aventuras. Si quieres probarte en batalla, te aconsejo que salgas de la ciudad hacia las <b>Llanuras de Barnger</b>, allí encontrarás varias bestias a las que podrás hacerles frente. Si crees que no lo necesitas puedes dirigirte hacia la <b>Tienda de Goldgard</b> y aprovisionarte de lo necesario para comenzar tu viaje. Que tengas buena suerte!</p><p><em>*Laudino se da la vuelta y camina hacia una pareja de jóvenes indicándoles como empuñar una espada*</em></p>' 
+        story.appendChild(dwarf4)
 
         // Muestreo de habilidades del personaje
-        const personaje = document.getElementById("personaje")
-        personaje.innerHTML = `<p><b>Atributos:</b></p><p>Ataque: <small><em>${character.atk}</em></small></p><p>Defensa: <small><em>${character.def}</em></small></p><p>Agilidad: <small><em>${character.agi}</em></small></p><p>Inteligencia: <small><em>${character.int}</em></small></p><p>Carisma: <small><em>${character.char}</em></small></p><p>Vida: <small><em>${character.life}</em></small></p>`
+        const cha = document.getElementById("skillsList")
+        cha.innerHTML = `<button id="toggle">Atributos</button><ul id="skills" style="display: none"><li>Ataque:<small> ${character.atk}</small></li><li>Defensa:<small> ${character.def}</small></li><li>Agilidad:<small> ${character.agi}</small></li><li>Inteligencia:<small> ${character.int}</small></li><li>Carisma:<small> ${character.char}</small></li><li>Vida:<small> ${character.life}</small></li></ul>`
 
         // Cambio de mensaje de eleccion
-        const mensaje1 = document.getElementById("mensaje1")
-        mensaje1.innerHTML = '<p>Elige a dónde quieres ir indicando el número correspondiente.</p>'
+        const msg1 = document.getElementById("msg1")
+        msg1.innerHTML = '<p>Elige a dónde quieres ir indicando el número correspondiente.</p>'
 
         // Cambio de opciones
-        const opciones1 = document.createElement("p")
-        opciones1.innerHTML = '<p id="opciones1">1. Llanuras de Barnger   2. Tienda de Goldgard</p>'
-        mensaje1.appendChild(opciones1)
+        const options1 = document.getElement("options1")
+        options1.innerText = '1. Llanuras de Barnger   2. Tienda de Goldgard'
 
         // Comienzo de la siguiente funcion
         next.innerText = 'Elige tu camino'
-        next.removeEventListener("click", elegirEstilo)
+        next.removeEventListener("click", elegirEstiloEnano)
         next.addEventListener("click", primerDestino)
     }else if(style == "2"){
         character.entrenamiento(1,1,1,2)
